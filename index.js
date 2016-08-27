@@ -24,7 +24,7 @@ database.init(function(){
             groups.init(function(){
                 var app = require('./app/apps');
                 apps.loadapps(function(){
-                    app.listenport function(){
+                    app.listen(port function(){
                         log.info('listening on port ' + port );
                     })
                 });
