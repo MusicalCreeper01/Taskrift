@@ -4,6 +4,7 @@
   "description": "Project Managment Solution",
   "main": "index.js",
   "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install",
     "prestart": "grunt wiredep",
     "start": "node .",
     "install": "npm install bower -g && npm install && bower install",
@@ -12,6 +13,7 @@
   "author": "Keith Mitchell",
   "license": "ISC",
   "dependencies": {
+    "bower": "^1.7.9",
     "body-parser": "^1.15.2",
     "colors": "^1.1.2",
     "connect-ensure-login": "^0.1.1",
