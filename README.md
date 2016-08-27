@@ -8,6 +8,11 @@ Features:
 * Plugins (called "Apps")
 * Projects
 * Basic accounts
+ 
+
+A demo can be seen here: http://taskrift-example.herokuapp.com/ (the github intergration plugin/app is not completed/working yet)
+* username: admin 
+* password: password
 
 TODO:
 
