@@ -12,15 +12,10 @@ var apps     = require('./util/apps.js');
 
 /* configure port */
 var port = 3000;
-if(config.port != null){
-    port = config.port;
-}else{
-    /*If the port enviroment variable is set, use it instead 3000
-   This is used for if your running the server on something like Heroku,
-   and it's usful if it's running in a Docker enviroment*/
-    if(process.env.PORT)
+if(process.env.PORT)
         port = process.env.PORT;
-}
+else if(config.port != null)
+    port = config.port;
 
 
 database.init(function(){
