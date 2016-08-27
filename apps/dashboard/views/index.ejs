@@ -1,0 +1,65 @@
+<!--<div style="padding: 0 10px">-->
+
+<div class="row container-fluid">
+<!--
+    <div class="col-xs-8 col-md-6">
+        <div class="widget color-1">
+            <h4>Projecft Name</h4>
+            <h2>&nbsp;My Project!</h2>
+        </div>
+    </div>
+    <div class="col-xs-4 col-md-2">
+        <div class="widget color-2">
+            
+<h1 class="widget-value">42</h1>
+<h1 class="widget-desc">Widget 2</h1>
+
+            <div class="ct-chart"></div>
+            <script>
+                var data = {
+                    labels: ['Mon', 'Tue', 'Wes', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    series: [
+                        [25, 8, 14, 18, 1, 21, 36]
+                    ]
+                };
+
+                new Chartist.Bar('.ct-chart', data, { 
+                    chartPadding: 0,
+                    axisX:{
+                        offset: 20,
+                    },
+                    axisY:{
+                        offset: 20,
+                    },
+                    seriesBarDistance: 0
+                });
+            </script>
+        </div>
+    </div>
+-->
+    <% for(var i = 0; i < display.length; ++i) { %>
+
+    <% if(display[i].size == undefined || display[i].size == 1) { %>
+    <div class="col-xs-4 col-md-2">
+        <% } %>
+
+        <% if(display[i].size == 2) { %>
+        <div class="col-xs-6 col-md-4">
+            <% } %>
+
+            <% if(display[i].size == 3) { %>
+            <div class="col-xs-6 col-md-8">
+                <% } %>
+
+                <% if(display[i].size == 4) { %>
+                <div class="col-xs-12 col-md-12">
+                    <% } %>
+                    <div class="widget color-2">
+
+                        <h1 class="widget-value"><%= display[i].main %></h1>
+                        <h1 class="widget-desc"><%= display[i].secondary != undefined ? display[i].secondary : '' %></h1>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+            <!--</div>-->

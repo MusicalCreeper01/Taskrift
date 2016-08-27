@@ -1,0 +1,64 @@
+### Login ###
+
+Using passport with express for local authentication allows easy expandability later on for adding support for other login methods. Cookies are used via express to set and restart the user's id and data for persistent sessions. 
+
+TODO: Add options MongoDB support for session persistence across server restarts
+
+### Pre-Processing ###
+
+By using EJS as an HTML pre-processor in the express routes we can create much more versatile HTML pages, and remove the need for AJAX and socket calls to collect data that is simply needed when the page is created.
+
+This speeds up loading time, as calculations are then done on the server instead of the client. 
+
+Using express-device along with EJS also allows for easy creation of platform-specific templates, such as specific pages that are different for phones, tables, cars, TVs, etc
+
+### Front-End libraries ###
+
+My ususal way of handling libaraies like Bootstrap, JQuery, etc was to install them via NPM and then create Express routes for each one. However this was inconvinient and it required adding 2+ lines of code for each library route. 
+
+Instead, by using Bower and grunt-wireddep I can install packages via bower ,and then run the grunt-wireddep task to automatically add the bower packages to the ejs template pages.
+
+Ensure to exclude ratchet from the wiredep task, as otherwise the ratchet css will be applied on both the desktop and mobile versions of the page. Instead just include ratchet outside of the bower tags in the mobile header file.
+
+### Accounts and groups ###
+
+One table holds user accounts data, username, email, etc. 
+
+Another table holds group information, group id and name. 
+
+A third table holds group memberships, a pair of 2 ints defining the group and the user that's assigned to it. 
+
+And then a 4th table holds premissions. Pairing the group ids and user ids with permissions for different projects and settings. 
+
+To select all users in a cirtain groups you would query: 
+
+    SELECT *
+    FROM accounts
+    WHERE id IN
+        (SELECT user 
+        FROM memberships WHERE [group] = 2)
+     
+Where the group id in the membership table is the group id you want to select users for.
+
+Similarially, if you want to select all the groups a user is in you can do:
+
+    SELECT *
+    FROM memberships
+    WHERE user = 1
+    
+Or if you want a list of all the names of the groups a user is in, you can query: 
+
+SELECT name
+FROM groups
+WHERE id IN 
+    (SELECT [group] FROM memberships WHERE user = 1)
+    
+Or to do it with the user's username instead of their userid: 
+
+    SELECT *
+    FROM groups
+    WHERE id IN 
+        (SELECT [group] FROM memberships WHERE user IN 
+            (SELECT id from accounts WHERE username = 'admin'))  
+
+

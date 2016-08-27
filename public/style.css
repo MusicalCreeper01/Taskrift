@@ -1,0 +1,366 @@
+/*  ===== WARNING =====
+/public/style.css
+is overwritten on run
+by /sass/style.scss
+===== WARNING =====  */
+@font-face {
+  font-family: 'Roboto';
+  src: url("/fonts/Roboto-Regular.ttf"); }
+
+@font-face {
+  font-family: 'Forced-Square';
+  src: url("/fonts/FORCED SQUARE.ttf"); }
+
+@font-face {
+  font-family: 'Square';
+  src: url("/fonts/Square.ttf"); }
+
+@font-face {
+  font-family: 'Prism';
+  src: url("/fonts/prismfont_CLv3.ttf"); }
+
+@font-face {
+  font-family: 'Inversion';
+  src: url("/fonts/inversion.ttf"); }
+
+@font-face {
+  font-family: 'Geosans';
+  src: url("/fonts/GeosansLight.ttf"); }
+
+/* Changing the height will also adjust the corrosponding
+elements to fit the theme*/
+html {
+  overflow: hidden; }
+
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+  background-color: #33393B;
+  height: 100%;
+  color: white; }
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0; }
+
+div.content-wrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 100px;
+  right: 0;
+  left: 0;
+  bottom: 0; }
+
+nav.main-nav {
+  width: 100%;
+  height: 60px;
+  background-color: #3F4D52;
+  position: relative;
+  line-height: 60px;
+  color: #fff;
+  z-index: 100;
+  font-size: 20px; }
+  nav.main-nav > * {
+    display: inline-block;
+    vertical-align: bottom; }
+  nav.main-nav * {
+    line-height: 60px; }
+  nav.main-nav .project-selector {
+    width: 240px;
+    height: 100%;
+    background-color: #3F4D52;
+    font-family: Square, Inversion;
+    padding-left: 10px;
+    color: #fff; }
+    nav.main-nav .project-selector a {
+      cursor: pointer;
+      text-decoration: none; }
+      nav.main-nav .project-selector a h1 {
+        transition: all .2s ease-in-out; }
+      nav.main-nav .project-selector a h1:hover {
+        color: #cccccc; }
+  nav.main-nav a {
+    color: #fff; }
+  nav.main-nav div.search-container {
+    padding-left: 10px; }
+    nav.main-nav div.search-container input[type="search"] {
+      margin-left: 10px;
+      height: 100%;
+      background-color: transparent;
+      border: none;
+      vertical-align: inherit;
+      font-size: 30px; }
+    nav.main-nav div.search-container input[type="search"]:focus {
+      outline-width: 0; }
+  nav.main-nav div.nav-right {
+    float: right;
+    height: 100%;
+    padding: 0 5px;
+    font-size: 28px; }
+  nav.main-nav div.nar-buttons a i {
+    transition: all .2s ease-in-out; }
+  nav.main-nav div.nar-buttons a i:hover {
+    cursor: pointer;
+    color: #cccccc; }
+  nav.main-nav div.nav-right > * {
+    padding: 0 5px; }
+
+@media only screen and (max-width: 940px) {
+  div.search-container {
+    display: none; } }
+
+div.main-apps {
+  /* http://stackoverflow.com/questions/13274599/sass-calculate-percent-minus-px */
+  height: 40px;
+  width: 100%;
+  background-color: #374347;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  position: relative;
+  line-height: 40px;
+  color: #fff;
+  z-index: 80; }
+  div.main-apps ul {
+    width: 100%;
+    height: 100%;
+    padding: 0 10px;
+    margin: 0; }
+    div.main-apps ul li {
+      display: inline-block;
+      height: 100%;
+      width: auto;
+      vertical-align: middle;
+      text-align: center;
+      position: relative;
+      color: #fff; }
+      div.main-apps ul li a {
+        padding: 10px;
+        display: block;
+        height: 100%;
+        width: auto;
+        text-decoration: none;
+        -o-transition: color .1s ease-out, background .2s ease-in;
+        -ms-transition: color .1s ease-out, background .2s ease-in;
+        -moz-transition: color .1s ease-out, background .2s ease-in;
+        -webkit-transition: color .1s ease-out, background .2s ease-in;
+        transition: color .1s ease-out, background .2s ease-in; }
+      div.main-apps ul li a:hover {
+        background-color: #21282a; }
+      div.main-apps ul li .seperator {
+        margin-top: 10%;
+        height: 80%;
+        width: 2px;
+        background-color: #2c3539; }
+      div.main-apps ul li p {
+        height: auto;
+        width: auto;
+        margin: 0 auto;
+        line-height: 15px;
+        bottom: 10px;
+        color: #fff; }
+      div.main-apps ul li .icon {
+        font-size: 30px;
+        color: #fff;
+        display: none; }
+
+div.page-settings-wrapper div.page-settings-content {
+  overflow-y: auto; }
+  div.page-settings-wrapper div.page-settings-content h1, div.page-settings-wrapper div.page-settings-content h2, div.page-settings-wrapper div.page-settings-content h3, div.page-settings-wrapper div.page-settings-content h4, div.page-settings-wrapper div.page-settings-content h5, div.page-settings-wrapper div.page-settings-content h6, div.page-settings-wrapper div.page-settings-content p {
+    margin: 0; }
+  div.page-settings-wrapper div.page-settings-content .seperator {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    margin: 10px 0; }
+  div.page-settings-wrapper div.page-settings-content #users-table {
+    width: 100%; }
+
+div.page-projects-wrapper div.page-projects-content h1, div.page-projects-wrapper div.page-projects-content h2, div.page-projects-wrapper div.page-projects-content h3, div.page-projects-wrapper div.page-projects-content h4, div.page-projects-wrapper div.page-projects-content h5, div.page-projects-wrapper div.page-projects-content h6, div.page-projects-wrapper div.page-projects-content p {
+  margin: 0; }
+
+div.page-projects-wrapper div.page-projects-content .seperator {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin: 10px 0; }
+
+div.page-projects-wrapper div.page-projects-content ul {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  padding: 10px 0;
+  margin: 0; }
+  div.page-projects-wrapper div.page-projects-content ul li.project {
+    width: 90%;
+    margin: 10px auto;
+    height: 10%;
+    background-color: #404D52;
+    color: #fff;
+    transition: all .2s ease-in-out; }
+    div.page-projects-wrapper div.page-projects-content ul li.project a {
+      padding: 10px;
+      display: block;
+      height: 100%;
+      width: 100%;
+      color: #fff;
+      text-decoration: none; }
+  div.page-projects-wrapper div.page-projects-content ul li.active {
+    -webkit-box-shadow: inset 0px 0px 20px 6px #6d838b;
+    -moz-box-shadow: inset 0px 0px 20px 6px #6d838b;
+    box-shadow: inset 0px 0px 20px 6px #6d838b; }
+  div.page-projects-wrapper div.page-projects-content ul li:hover {
+    transform: scale(1.03);
+    -webkit-box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 30px 2px rgba(0, 0, 0, 0.75); }
+
+div.modal-wrapper-basic {
+  z-index: 90;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); }
+  div.modal-wrapper-basic div.modal-content-basic {
+    position: relative;
+    width: 70%;
+    margin: 0 auto;
+    height: 100%;
+    border-radius: 0;
+    background-color: #4b5356;
+    -webkit-box-shadow: 0px 0px 26px 3px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 26px 3px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 26px 3px rgba(0, 0, 0, 0.75);
+    padding: 10px; }
+
+div.widget {
+  min-width: 180px;
+  width: 100%;
+  min-height: 120px;
+  height: 120px;
+  margin: 10px auto;
+  font-family: Geosans;
+  positon: relative;
+  overflow: auto;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding-left: 10px;
+  padding-top: 10px; }
+  div.widget .widget-value {
+    font-size: 68px;
+    text-align: center;
+    margin: 0;
+    margin-top: 0px;
+    color: #fff; }
+  div.widget .widget-desc {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin: 0; }
+
+ul.large-project-list {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  list-style: none;
+  margin: 0;
+  padding: 10px; }
+  ul.large-project-list li.project {
+    width: 30%;
+    height: 20%;
+    background-color: #404D52;
+    display: inline-block; }
+    ul.large-project-list li.project a {
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none; }
+      ul.large-project-list li.project a h1 {
+        border-bottom: 4px solid white;
+        width: auto;
+        line-height: 36px;
+        display: inline-block; }
+
+.color-1 {
+  background-color: #404D52;
+  color: #fff; }
+
+.color-2 {
+  background-color: #404D52;
+  color: #fff; }
+
+.color-3 {
+  background-color: #404D52;
+  color: #fff; }
+
+.color-4 {
+  background-color: #404D52;
+  color: #fff; }
+
+.color-1 *, .color-2 *, .color-3 *, .color-4 * {
+  color: #fff; }
+
+text.ct-label, span.ct-label {
+  color: white;
+  font-size: 12px; }
+
+.close-button {
+  float: right;
+  font-size: 24px;
+  color: #ccc6c4; }
+
+.close-button:hover {
+  color: #fbfbfb;
+  cursor: pointer; }
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"], input[type="search"] {
+  font-size: 24px;
+  background-color: #33393b;
+  border: 1px solid #313638;
+  outline: none;
+  color: #fff;
+  border-radius: 2px;
+  box-shadow: none;
+  padding: 0px;
+  padding-left: 10px; }
+
+tr, td, table.dataTable tbody tr {
+  background: transparent; }
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: white; }
+  .dataTables_wrapper .dataTables_length select, .dataTables_wrapper .dataTables_filter select, .dataTables_wrapper .dataTables_info select, .dataTables_wrapper .dataTables_processing select, .dataTables_wrapper .dataTables_paginate select {
+    color: black; }
+
+textarea {
+  font-size: 18px;
+  width: 100% !important;
+  background-color: #33393b;
+  border: none;
+  border-radius: 2px;
+  border: 1px solid #313638;
+  outline: none;
+  color: #fff;
+  padding: 2px;
+  padding-left: 4px; }
+
+form > * {
+  margin-bottom: 10px;
+  margin-top: 10px; }
+
+button, input.btn, input[type="submit"], .btn {
+  border-radius: 0;
+  border: 0;
+  border: none;
+  padding: 5px 12px; }

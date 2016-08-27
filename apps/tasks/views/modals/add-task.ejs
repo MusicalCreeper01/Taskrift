@@ -1,0 +1,40 @@
+<a class="close-button" onclick="close_modal('add-task')">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</a>
+<form id="new-task-form">
+    
+    <input type="text" placeholder="Task Name" id="task-name">
+    <textarea placeholder="Description.." id="task-desc"></textarea>
+    <input value="Add Task" class="btn btn-success btn-positive" type="submit">
+</form>
+<script>
+    $(document).ready(function(){
+        $('#new-task-form').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                method: "POST",
+                url: "tasks/add",
+                dataType: "json",
+                data: { 
+                    name: $('#task-name').val(), 
+                    desc: $('#task-desc').val(),
+                    project: <%- project %>
+                }
+            }).done(function(json)  {
+                console.log(json);
+                //$('#tasks').append(
+                var s = '<div class="task color-3" task-data="'+JSON.stringify(json).replace(/"/g, "'")+'" task-id="'+json.id+'"><a href="#"><div class="info"><h1>'+json.title+'</h1><h4>'+json.desc+'</h4></div><div class="modify" style="display: none"><input type="text" class="task-title" placeholder="Title"><textarea class="task-desc"></textarea></div><div class="completed">';
+                
+                if(!json.completed)
+                    s+= '<i class="fa fa-check-square-o" aria-hidden="true" style="color: red"></i>'
+                else
+                    s+='<i class="fa fa-check-square-o" aria-hidden="true" style="color: green"></i>';
+    
+                s+='</div><div class="edit"><i class="fa fa-trash" aria-hidden="true"></i></div></a></div>';
+                $('#tasks').append(s);
+                
+                close_modal('add-task');
+            });
+        });
+    });
+</script>

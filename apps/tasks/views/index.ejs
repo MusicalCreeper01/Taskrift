@@ -1,0 +1,137 @@
+<button class="btn-success open-modal" modal-open="add-task" style="margin-top: 10px; margin-left: 10px;">Add Task</button>
+<div class="row" id="tasks" style="padding: 0 15px;">
+    <% for(var i = 0; i < tasks.length; ++i){ %>
+    <div class="task color-3" task-data="<%- JSON.stringify(tasks[i]).replace(/"/g, "'") %>" task-id="<%- tasks[i].id %>">
+        <a href="#">
+            <div class="info">
+                <h1><%- tasks[i].title %></h1>
+                <h4><%- tasks[i].desc %></h4>
+            </div>
+            <div class="modify" style="display: none">
+                <input type="text" class="task-title" placeholder="Title">
+                <!--                <input type="text" class="task-desc" placeholder="Description">-->
+                <textarea class="task-desc"></textarea>
+            </div>
+            <div class="completed">
+                <a class="complete-task" style="display: block">
+                    <% if(tasks[i].completed == 0){ %>
+                    <i class="fa fa-check-square-o" aria-hidden="true" style="color: red"></i>
+                    <% } else { %>
+                    <i class="fa fa-check-square-o" aria-hidden="true" style="color: green"></i>
+                    <% } %>
+                </a>
+            </div>
+            <div class="edit">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+        </a>
+    </div>
+    <% } %>
+    <script>
+        function update_task(task_data){
+            $.post("/tasks/update/"+task_data.id, { data: task_data },
+                   function(data, status){
+                alert("Data: " + data + "\nStatus: " + status);
+            });   
+        }
+        $('.edit').on('click', function(){
+            var id = $(this).parent().attr('task-id');
+//            console.log($(this));
+//            console.log($(this).parent());
+            var el = $(this).parent();
+            $.ajax({
+                method: "POST",
+                url: "tasks/delete/" + id,
+                dataType: 'text'
+            }).done(function()  {
+                console.log('deleting task ' + id);
+                el.remove();
+            });
+                                                                                      
+//            if($(this).parent().children('.info').is(":visible")){
+//                $(this).parent().children('.completed').fadeOut();
+//                $(this).parent().children('.info').fadeOut(function(){
+//                    $(this).parent().children('.modify').fadeIn();
+//                });
+//            }else{
+//                
+//                var title = $(this).parent().children('.modify').children('.task-title').val();
+//                var desc = $(this).parent().children('.modify').children('.task-desc').val();
+//                
+//                var data = JSON.parse($(this).parent().parent().attr('task-data').replace(/'/g, '"'));
+//                
+//                console.log(data);
+//                
+//                console.log(title + ': ' + desc);
+//                
+//                $(this).parent().children('.modify').fadeOut(function(){
+//                    $(this).parent().children('.completed').fadeIn();
+//                    $(this).parent().children('.info').fadeIn();
+//                }); 
+//            }
+
+        });
+    </script>
+</div>
+
+<style>
+    .task{
+        width: 220px;
+        height: 120px;
+        display: inline-block;
+        padding: 10px;
+        margin: 10px;
+        overflow: auto;
+        position: relative;
+    }
+    .task a {
+        width: 100%;
+        height: 100%;
+        display: block;
+        text-decoration: none;
+        position: relative;
+    }
+    
+    .completed, .edit {
+        margin: 5px;
+    }
+    .completed{
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        font-size: 28px;
+    }
+    .edit{
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        font-size: 28px;
+    }
+    .task-title{
+        /*        padding: 10px;*/
+        font-size: 24px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid white;
+        outline: none;
+    }
+    .info, .modify {
+        width: 100%;
+        height: 100%;
+    }
+    .modify>input {
+        width: 100%;
+    }
+    .task-desc{
+        width: 100%;
+        font-size: 14px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 2px solid white;
+        outline: none;
+    }
+    .complete-task{
+        display: block;
+        position: relative;
+    }
+</style>

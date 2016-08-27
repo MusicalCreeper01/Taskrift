@@ -1,0 +1,52 @@
+
+<a class="close-button" onclick="hide_settings()">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</a><h1>Users</h1>
+<div class="seperator"></div>
+<table id="users-table" class="table table-outlined" style="width:100%">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Username</td>
+            <td>Display Name</td>
+            <td>Email</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    $(document).ready(function(){
+        <% if(users != undefined && users.length > 0){ %>
+        var users = <%- JSON.stringify(users) %>;
+        var table = $('#users-table').DataTable();
+        users.forEach(function(el){
+            table.row.add([el.id, el.username, el.displayname, el.email]).draw(false);
+        });
+        <% } %>
+    });
+</script>
+
+<h1 style="margin-top: 10px">Groups</h1>
+<div class="seperator"></div>
+<table id="groups-table" class="table table-outlined" style="width:100%">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Name</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script>
+    $(document).ready(function(){
+        var groups = <%- JSON.stringify(groups) %>;
+        var table = $('#groups-table').DataTable();
+        groups.forEach(function(el){
+            table.row.add([el.id, el.name]).draw(false);
+        });
+    });
+</script>

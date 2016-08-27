@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <body>
+        <header>
+            <% include partials/header %>
+        </header>
+
+
+        <ul class="large-project-list">
+            <% for(var i = 0; i < projects.length; ++i){ %>
+            <li class="project">
+                <a href="?project=<%- projects[i].id%>">
+                    <h1><%- projects[i].name %></h1>
+                </a>
+            </li>
+            <% } %>
+            <script>
+
+            </script>
+        </ul>
+
+        <div class="page-settings-wrapper modal-wrapper-basic" style="display:none">
+            <div class="page-settings-content modal-content-basic" style="display:none">
+                <% include settings %>
+            </div>
+        </div>
+
+        <script>
+            function show_settings(){
+                $('.page-settings-wrapper').fadeIn(function(){
+                    $('.page-settings-content').slideDown();
+                });
+            }
+            function hide_settings(){
+                $('.page-settings-content').slideUp(function(){
+                    $('.page-settings-wrapper').fadeOut(); 
+                });
+            }
+        </script>
+
+        <div class="page-projects-wrapper modal-wrapper-basic" style="display:none">
+            <div class="page-projects-content modal-content-basic" style="display:none">
+                <% include projects %>
+            </div>
+        </div>
+
+        <script>
+            function show_projects(){
+                $('.project').hide();
+                $('.page-projects-wrapper').fadeIn(function(){
+                    $('.page-projects-content').slideDown(function(){
+                        $('.project').show();
+                        var delay = 0;
+                        $('.project').each(function(index){
+                            //http://stackoverflow.com/questions/6073924/jquery-animate-change-the-elements-opacity-one-by-one
+                            $(this).delay(delay).addClass('animated fadeIn');
+                            $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (){
+                                $(this).removeClass('animated fadeIn');
+                            } );
+
+                            delay += 3000;
+                        });
+                    });
+                });
+            }
+            function hide_projects(){
+                $('.page-projects-content').slideUp(function(){
+                    $('.page-projects-wrapper').fadeOut(); 
+                });
+            }
+        </script>
+    </body>
+</html>

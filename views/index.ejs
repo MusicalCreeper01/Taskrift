@@ -1,0 +1,117 @@
+<html>
+    <head>
+        <% include partials/head %>
+    </head>
+    <body>
+        <header>
+            <% include partials/header %>
+        </header>
+
+        <div class="content-wrapper " <% if(project == undefined || project == 'undefined') { %> style="display:none" <% } %>>
+            <%- content %>
+        </div>
+
+        <div class="page-settings-wrapper modal-wrapper-basic" style="display:none">
+            <div class="page-settings-content modal-content-basic" style="display:none">
+                <% include settings %>
+            </div>
+        </div>
+
+        <script>
+            $('.page-settings-wrapper').click(hide_settings).children().click(function(e) {
+                return false;
+            });
+            function show_settings(){
+                $('.page-settings-wrapper').fadeIn(function(){
+                    $('.page-settings-content').slideDown();
+                });
+            }
+            function hide_settings(){
+                $('.page-settings-content').slideUp(function(){
+                    $('.page-settings-wrapper').fadeOut();
+                });
+            }
+        </script>
+
+        <div class="page-projects-wrapper modal-wrapper-basic" style="display:none">
+            <div class="page-projects-content modal-content-basic" style="display:none">
+                <% include projects %>
+            </div>
+        </div>
+
+        <script>
+            $('.page-projects-wrapper').click(hide_projects).children().click(function(e) {
+                return false;
+            });
+            function show_projects(){
+                $('.project').hide();
+                $('.page-projects-wrapper').fadeIn(function(){
+                    $('.page-projects-content').slideDown(function(){
+                        $('.project').show();
+                        var delay = 0;
+                        $('.project').each(function(index){
+                            //http://stackoverflow.com/questions/6073924/jquery-animate-change-the-elements-opacity-one-by-one
+                            $(this).delay(delay).addClass('animated fadeIn');
+                            $(this).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function (){
+                                $(this).removeClass('animated fadeIn');
+                            } );
+
+                            delay += 3000;
+                        });
+                    });
+                });
+            }
+            function hide_projects(){
+                $('.page-projects-content').slideUp(function(){
+                    $('.page-projects-wrapper').fadeOut();
+                });
+            }
+            <% if(project == undefined || project == 'undefined') { %>
+            show_projects();
+            <% } %>
+        </script>
+
+
+
+        <script>
+            var modals = <%- JSON.stringify(modals)%>;
+
+            for(var key in modals){
+                var appModals = modals[key];
+
+                if(appModals != undefined){
+                    appModals.forEach(function(el){
+                        var modal = '<div class="modal-wrapper-basic" style="display:none" modal="'+el.slug+'"><div class="modal-content-basic" style="display:none">'+htmlDecode(el.data)+'</div></div>';
+                        $('body').append(modal);
+                    });
+                }
+            }
+            $(document).ready(function(){
+                $('.open-modal').on('click', function(){
+                    var modal = $(this).attr('modal-open');
+                    $('[modal="'+modal+'"]').fadeIn(function(){
+                        $('*[modal="'+modal+'"]>div').slideDown();
+                    });
+                });
+            });
+
+            function close_modal(slug){
+                $('*[modal="'+slug+'"]>div').slideUp(function(){
+                    $('[modal="'+slug+'"]').fadeOut();
+                });
+            }
+
+            function htmlDecode(input)
+            {
+                var doc = new DOMParser().parseFromString(input, "text/html");
+                return doc.documentElement.textContent;
+            }
+            //            apps.forEach(function(el){
+            //               if(el.modals != undefined){
+            //                   var modal = '';
+            //               }
+            //            });
+
+        </script>
+    </body>
+</html>

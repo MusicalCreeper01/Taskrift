@@ -1,0 +1,56 @@
+<nav class='main-nav'>
+    <div class="project-selector">
+        <a id="project-button" onclick="show_projects()">
+            <h1><%- menubar %> 
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </h1>
+        </a>
+    </div>
+    <div class="search-container">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <input type="search" placeholder="Search..." id="main-search">
+    </div>
+    <div class="nav-right nar-buttons">
+        <a>
+            <i class="fa fa-user" aria-hidden="true"></i>
+        </a>
+        <a onclick="show_settings()">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+        </a>
+    </div>
+</nav>
+<% if(locals.apps != undefined ) { %>
+<div class="main-apps">
+    <ul>
+        <% for (var key in apps){ %>
+        <li>
+            <a href="?app=<%- apps[key].slug %>">
+                <i class="icon fa fa-<%- apps[key].icon %>" aria-hidden="true"></i>  
+                <p><%- apps[key].name %></p>
+            </a>
+        </li>
+        <% } %>
+        <!--
+<li>
+<a>
+<i class="icon fa fa-tachometer" aria-hidden="true"></i>  
+<p>Dashboard</p>
+</a>
+</li>
+<li>
+<a href="#">
+<i class="icon fa fa-user" aria-hidden="true"></i>  
+<p>Users</p>
+</a>
+</li>
+<li>
+<div class="seperator">
+</div>
+</li>
+-->
+
+
+    </ul>
+</div>
+
+<% } %>

@@ -1,0 +1,552 @@
+/*  ===== WARNING ===== 
+/public/style.css
+is overwritten on run
+by /sass/style.scss
+===== WARNING =====  */
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Forced-Square';
+    src: url('/fonts/FORCED SQUARE.ttf');
+}
+
+@font-face {
+    font-family: 'Square';
+    src: url('/fonts/Square.ttf');
+}
+
+@font-face {
+    font-family: 'Prism';
+    src: url('/fonts/prismfont_CLv3.ttf');
+}
+
+//Not working
+@font-face {
+    font-family: 'Inversion';
+    src: url('/fonts/inversion.ttf');
+}
+
+@font-face {
+    font-family: 'Geosans';
+    src: url('/fonts/GeosansLight.ttf');
+}
+
+$main-font-stack: Roboto, Helvetica, sans-serif;
+$project-font: Square, Inversion;
+$widget-font: Geosans;
+
+$primary-background-color: #EBEBEB;
+$primary-bright-color: #ed6c44;
+$primary-dark-color: #4c4743;
+
+$color-1: #ffb230;
+$color-2: #ed6c42;
+$color-3: #c3a279;
+$color-4: #4c4743;
+
+$primary-font-color: #fff;
+$dark-font-color: #827e77;
+
+$projectsel-width: 310px;
+
+/* Changing the height will also adjust the corrosponding 
+elements to fit the theme*/
+$navbar-height: 80px;
+
+html {
+    overflow: hidden;
+}
+
+body {
+    font-family: $main-font-stack;
+    background-color: $primary-background-color;
+
+    height: 100%;
+
+    color: black;
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0;
+}
+
+div.content-wrapper{
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    position: absolute;
+
+    top: $navbar-height*2;
+    right:0;
+    left:0;
+    bottom:0;
+}
+
+nav.main-nav{
+    width: 100%;
+    height: $navbar-height;
+    //background-color: $primary-background-color;
+    background-color: $primary-bright-color;
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    position: relative;
+
+    line-height: $navbar-height;
+
+    color: $primary-font-color;
+
+    z-index: 100;
+
+    >*{
+        display: inline-block;
+        vertical-align: bottom;
+    }
+
+    *{ line-height: $navbar-height; }
+
+    font-size: $navbar-height/3;
+
+    .project-selector{
+        width: $projectsel-width;
+        height: 100%;
+        background-color: $primary-bright-color;
+
+        font-family: $project-font;
+
+        padding-left: 10px;
+
+        color: $primary-font-color;
+
+        a{
+            cursor:pointer;
+            text-decoration: none;
+            h1 {
+                transition: all .2s ease-in-out;
+            }
+
+            h1:hover {
+                color: darken($primary-font-color, 20%);
+            }
+        }
+    }
+
+    a {
+        color: $primary-font-color;
+    }
+
+    div.search-container {
+        padding-left: 10px;
+
+        input[type="search"]{
+            margin-left: 10px;
+            height: 100%;
+            background-color: transparent;
+            border: none;
+            vertical-align: inherit;
+            font-size: $navbar-height/2;
+        }
+
+        input[type="search"]:focus{
+            outline-width: 0;
+        }   
+    }
+
+    div.nav-right{
+        float: right;
+        height: 100%;
+        padding: 0 5px;
+        font-size: 28px;
+    }
+
+    div.nar-buttons {
+        a i {
+            transition: all .2s ease-in-out;
+        }
+        a i:hover {
+            cursor:pointer;
+            color: darken($primary-font-color, 20%);
+        }
+    }
+
+    div.nav-right>*{
+        padding: 0 5px;
+    }
+}
+@media only screen and (max-width : 940px) {
+    div.search-container {
+        display: none;
+    }
+}
+
+
+div.main-apps {
+    /* http://stackoverflow.com/questions/13274599/sass-calculate-percent-minus-px */
+    //top : $navbar-height;
+
+    height: $navbar-height;
+
+    width: 100%;
+    background-color: $primary-dark-color;
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    position: relative;
+
+    line-height: $navbar-height;
+
+    color: $primary-font-color;
+    z-index: 80;
+
+    ul {
+        width: 100%;
+        height: 100%;
+
+        padding: 0 10px;
+        margin:0;
+
+        li{
+            display: inline-block;
+
+            height: $navbar-height;
+            width: $navbar-height;
+
+            vertical-align: middle;
+            text-align: center;
+
+            position: relative;
+
+            color: $primary-font-color;
+
+            a {
+                padding: 10px;
+                display: block;
+                height: 100%;
+                width: 100%;
+
+                -o-transition:      color .1s ease-out, background .2s ease-in;
+                -ms-transition:     color .1s ease-out, background .2s ease-in;
+                -moz-transition:    color .1s ease-out, background .2s ease-in;
+                -webkit-transition: color .1s ease-out, background .2s ease-in;
+                transition:         color .1s ease-out, background .2s ease-in;
+
+            }
+
+            a:hover {
+                background-color: darken($primary-dark-color, 10%);
+            }
+
+            .seperator{
+                margin-top: 10%;
+                height: 80%;
+                width: 2px;
+                background-color: darken($primary-dark-color, 5%);
+            }
+
+            p {
+                height: auto;
+                width: auto;
+                margin: 0 auto;
+
+                line-height: 15px;
+
+                position:absolute;
+
+                right:0;
+                left: 0;
+
+                bottom: 10px;
+
+                color: $primary-font-color;
+            }
+
+            .icon {
+                font-size:    $navbar-height/2;
+
+                color: $primary-font-color;
+            }
+        }
+    }
+}
+
+div.page-settings-wrapper{
+
+    div.page-settings-content{
+
+        overflow-y: auto;
+
+        h1, h2, h3, h4, h5, h6, p{
+            margin: 0;
+        }
+
+        .seperator{
+            width: 100%;
+            height: 1px;
+            background-color: darken($primary-background-color, 25%);
+            margin: 10px 0;
+        }
+
+        #users-table {
+            width: 100%;
+        }
+    }
+}
+
+div.page-projects-wrapper{
+
+    div.page-projects-content{
+
+
+
+        h1, h2, h3, h4, h5, h6, p{
+            margin: 0;
+        }
+
+        .seperator{
+            width: 100%;
+            height: 1px;
+            background-color: darken($primary-background-color, 25%);
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            width: 100%;
+            height: 100%;
+
+            padding: 10px 0;
+            margin:0;
+            li.project {
+
+                width: 90%;
+                margin: 10px auto;
+                height: 10%;
+                background-color: $color-1;
+                color: $primary-font-color;
+
+                transition: all .2s ease-in-out;
+
+                a {
+                    padding: 10px;
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+
+                    color: $primary-font-color;
+                    text-decoration: none;
+
+
+                }
+            }
+            li.active{
+                //                -webkit-box-shadow: inset 0px 0px 20px 6px rgba(255,255,0,0.51);
+                //                -moz-box-shadow: inset 0px 0px 20px 6px rgba(255,255,0,0.51);
+                //                box-shadow: inset 0px 0px 20px 6px rgba(255,255,0,0.51);
+
+                -webkit-box-shadow: inset 0px 0px 20px 6px lighten($color-1, 20%);
+                -moz-box-shadow: inset 0px 0px 20px 6px lighten($color-1, 20%);
+                box-shadow: inset 0px 0px 20px 6px lighten($color-1, 20%);
+            }
+
+            li:hover {
+                transform: scale(1.03);
+
+                -webkit-box-shadow: 0px 0px 30px 2px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 0px 30px 2px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 30px 2px rgba(0,0,0,0.75);
+            }
+        }
+    }
+}
+
+div.modal-wrapper-basic {
+
+    z-index: 90;
+
+    position: absolute;
+
+    top: $navbar-height;
+    right: 0;
+    left: 0;
+    bottom: 0;
+
+    background-color: rgba(darken($primary-background-color, 80%), .8);
+
+    div.modal-content-basic {
+        position: relative;
+
+        width: 70%;
+        margin: 0 auto;
+        height: 100%;
+
+        border-radius: 0;
+
+        background-color: lighten($primary-background-color, 10%);
+
+        -webkit-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 26px 3px rgba(0,0,0,0.75);
+
+        padding: 10px;
+
+
+    }
+}
+
+div.widget {
+    min-width: 180px;
+    width: 100%;
+    min-height: 120px;
+    height: 120px;
+    //    height: 100%;
+    margin: 10px auto;
+
+    font-family: $widget-font;
+
+    positon: relative;
+
+    overflow:auto;
+
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    color: $primary-font-color;
+
+    padding-left: 10px;
+    padding-top: 10px;
+
+    .widget-value {
+        font-size: 68px;
+        text-align: center;
+        margin: 0;
+        margin-top: 0px;
+        color: $primary-font-color;
+    }
+    .widget-desc {
+        position: absolute;
+        bottom:20px;
+        left:0;
+        right:0;
+        font-size: 24px;
+        color: $primary-font-color;
+        text-align: center;
+        margin:0;
+    }
+}
+
+ul.large-project-list{
+    position: absolute;
+
+    top: 80px;
+    right: 0;
+    left:0;
+    bottom:0;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 10px;
+
+    li.project{
+        width: 30%;
+        height: 20%;
+        background-color: $color-1;
+        display: inline-block;
+
+        a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            padding: 10px;
+
+            color: $primary-font-color;
+            text-decoration: none;
+
+            h1 {
+                border-bottom: 4px solid white;
+                width: auto;
+                line-height: 36px;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+
+.color-1 {
+    background-color: $color-1;
+    color: $primary-font-color;
+}
+.color-2 {
+    background-color: $color-2;
+    color: $primary-font-color;
+}
+.color-3 {
+    background-color: $color-3;
+    color: $primary-font-color;
+}
+.color-4 {
+    background-color: $color-4;
+    color: $primary-font-color;
+}
+.color-1 *, .color-2 *, .color-3 *, .color-4 * {
+    color: $primary-font-color;
+}
+
+text.ct-label, span.ct-label{
+    color: white;
+    font-size: 12px;
+}
+
+.close-button {
+    float:right;
+    font-size: 24px;
+    color: invert($primary-background-color);
+}
+
+.close-button:hover {
+    color: lighten(invert($primary-background-color), 20%);
+    cursor: pointer;
+}
+
+input[type="text"], input[type="number"], input[type="email"], input[type="password"] {
+    font-size: 24px;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid darken($primary-background-color, 10%);
+    outline: none;
+    color: darken($primary-background-color, 50%);
+    border-radius: 0;
+    box-shadow: none;
+}
+
+textarea {
+    font-size: 18px;
+    width: 100% !important;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid darken($primary-background-color, 10%);
+    outline: none;
+    color: darken($primary-background-color, 50%);
+}
+
+form>*{
+    margin-bottom: 10px;
+}
+
+button, input.btn, input[type="submit"] {
+    border-radius: 0;
+    border: 0;
+     border: none;
+    padding: 5px 12px;
+}

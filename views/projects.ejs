@@ -1,0 +1,85 @@
+<button class="btn-success" onclick="new_project()" id="change-project-creation"><i class="fa fa-plus" aria-hidden="true" ></i> Create Project</button>
+
+<a class="close-button" onclick="hide_projects()">
+    <i class="fa fa-times" aria-hidden="true"></i>
+</a>
+<ul id="project-list">
+    <% for(var i = 0; i < projects.length; ++i){ %>
+    <li class="project" style="background-image: url('/projects/img/<%- projects[i].image %>')">
+        <a href="?project=<%- projects[i].id%>">
+            <h1><%- projects[i].name %></h1>
+        </a>
+    </li>
+    <% } %>
+    <script>
+
+    </script>
+</ul>
+
+<form id="new-project" action="projects/add" method="post" enctype="multipart/form-data" style="display: none;padding: 20px 30px;">
+    <input type="text" id="project-name" name="project-name" placeholder="Project Name">
+    <img id="example" style="width: 100%;">
+
+    <div class="form-group">
+        <label for="exampleInputFile">Main Project Image</label></br>
+        <img id="example-image" style="width: 40%;"></br>
+        <input type="file" id="project-image" name="project-image" placeholder="Project Image">
+        <p class="help-block">Not required, recommended size (600x400)</p>
+    </div>
+
+    <input type="submit" class="btn-success" value="Create Project!">
+</form>
+
+<script>
+
+    $('#new-project').submit(function(e){
+        //e.preventDefault();
+
+        //console.log('new project!');
+
+        // $.ajax({
+        //     method: "POST",
+        //     url: "projects/add",
+        //     dataType: "text",
+        //     data: {
+        //         name: $('#project-name').val(),
+        //         image: $('#project-image').val()
+        //     }
+        // }).done(function(json)  {
+        //     // location.reload();
+        // });
+
+  })
+
+    var creatingProject = false;
+
+    $("#project-image").change(function(){
+        if (this.files && this.files[0]) {
+            var FR= new FileReader();
+            FR.onload = function(e) {
+                $("#example-image").attr('src', e.target.result);
+            };
+            FR.readAsDataURL( this.files[0] );
+        }
+    });
+
+    function new_project(){
+        if(!creatingProject){
+            $('#project-list').fadeOut(function(){
+                $('#new-project').fadeIn();
+            })
+            $('#change-project-creation').html('Cancel');
+            $('#change-project-creation').removeClass('btn-success');
+            $('#change-project-creation').addClass('btn-danger');
+            creatingProject = true;
+        }else{
+            $('#new-project').fadeOut(function(){
+                $('#project-list').fadeIn();
+            });
+            $('#change-project-creation').html('<i class="fa fa-plus" aria-hidden="true" ></i> Create Project');
+            $('#change-project-creation').addClass('btn-success');
+            $('#change-project-creation').removeClass('btn-danger');
+            creatingProject = false;
+        }
+    }
+</script>

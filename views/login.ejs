@@ -1,0 +1,40 @@
+<!-- views/login.ejs -->
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication<title>
+<!--        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">-->
+    <% include partials/head %> <!-- load bootstrap css -->
+    
+    <style>
+        html { height:100%;}
+        body        { min-height: 100%}
+    </style>
+</head>
+<body>
+<div class="container" style="height:100%;">
+
+<div class="col-sm-6 col-sm-offset-3 color-1" style="height:100%;padding-top: 40px;">
+    <!-- show any messages that come back with authentication -->
+    <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+
+    <!-- LOGIN FORM -->
+    <form action="/login" method="post">
+        <input type="text" class="form-control" name="username">
+        <input type="password" class="form-control" name="password">
+        
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+    </form>
+
+    <hr>
+
+    <p>Need an account? <a href="/signup">Signup</a></p>
+    <p>Or go <a href="/">home</a>.</p>
+
+</div>
+
+</div>
+</body>
+</html>
