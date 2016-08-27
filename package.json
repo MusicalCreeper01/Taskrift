@@ -11,6 +11,7 @@
   "author": "Keith Mitchell",
   "license": "ISC",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
     "bower": "^1.7.9",
     "colors": "^1.1.2",
